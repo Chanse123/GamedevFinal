@@ -19,5 +19,3 @@ tile_map_data = PackedByteArray("AAAAAAQAAAACAAAAAAABAAQAAAACAAAAAAACAAQAAAACAAA
 
 [node name="deathbox" parent="." instance=ExtResource("4_aqk2v")]
 position = Vector2(34, 310)
-
-[connection signal="body_entered" from="deathbox" to="." method="_on_deathbox_body_entered"]

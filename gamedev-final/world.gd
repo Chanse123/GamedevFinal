@@ -9,8 +9,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func _on_deathbox_body_entered(body):
-	if body.name == "player":
-		get_tree().reload_current_scene()
