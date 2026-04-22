@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://y48nnm0n875m"]
+[gd_scene load_steps=11 format=4 uid="uid://y48nnm0n875m"]
 
 [ext_resource type="Script" uid="uid://cbiwyaeqrfusj" path="res://world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://cmsuiygqikgpa" path="res://player.tscn" id="2_tlwt5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0ldhebo48rpe" path="res://deathbox.tscn" id="4_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://dv4r4nkh2yvp7" path="res://final tilsheet.png" id="5_036b0"]
 [ext_resource type="Script" uid="uid://b3l7ndby5r2m2" path="res://ui.gd" id="5_dwbse"]
+[ext_resource type="PackedScene" uid="uid://c4nil587mdr7g" path="res://enemy.tscn" id="7_pkg7o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwbse"]
 atlas = ExtResource("5_036b0")
@@ -58,3 +59,8 @@ stretch_mode = 5
 layout_mode = 2
 texture = SubResource("AtlasTexture_gbfbk")
 stretch_mode = 5
+
+[node name="enemy" parent="." instance=ExtResource("7_pkg7o")]
+position = Vector2(545, 217)
+collision_layer = 3
+collision_mask = 3

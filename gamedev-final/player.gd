@@ -101,18 +101,18 @@ func take_damage(amount):
 	if invincible:
 		return
 
+	invincible = true
+
 	health -= amount
 	print("Health:", health)
 
 	ui.update_hearts(health)   
 
-	if health <= 0:
-		die()
-		return
-
-	invincible = true
 	await get_tree().create_timer(invincible_time).timeout
 	invincible = false
+	
+	if health <= 0:
+		die()
 
 
 func die():
