@@ -108,11 +108,12 @@ func take_damage(amount):
 
 	ui.update_hearts(health)   
 
-	await get_tree().create_timer(invincible_time).timeout
-	invincible = false
-	
 	if health <= 0:
 		die()
+		return
+
+	await get_tree().create_timer(invincible_time).timeout
+	invincible = false
 
 
 func die():
