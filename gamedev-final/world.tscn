@@ -1,9 +1,23 @@
-[gd_scene load_steps=5 format=4 uid="uid://y48nnm0n875m"]
+[gd_scene load_steps=10 format=4 uid="uid://y48nnm0n875m"]
 
 [ext_resource type="Script" uid="uid://cbiwyaeqrfusj" path="res://world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://cmsuiygqikgpa" path="res://player.tscn" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://ok446vivs7t1" path="res://tile_map_layer.tscn" id="3_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://b0ldhebo48rpe" path="res://deathbox.tscn" id="4_aqk2v"]
+[ext_resource type="Texture2D" uid="uid://dv4r4nkh2yvp7" path="res://final tilsheet.png" id="5_036b0"]
+[ext_resource type="Script" uid="uid://b3l7ndby5r2m2" path="res://ui.gd" id="5_dwbse"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwbse"]
+atlas = ExtResource("5_036b0")
+region = Rect2(72, 141.5, 43, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkg7o"]
+atlas = ExtResource("5_036b0")
+region = Rect2(72, 142.5, 45, 49.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbfbk"]
+atlas = ExtResource("5_036b0")
+region = Rect2(71, 143.5, 47, 48.5)
 
 [node name="World" type="Node2D"]
 position = Vector2(1, 0)
@@ -19,3 +33,28 @@ tile_map_data = PackedByteArray("AAD+/wQAAQACAAAAAAD//wQAAQACAAAAAAAAAAQAAQACAAA
 
 [node name="deathbox" parent="." instance=ExtResource("4_aqk2v")]
 position = Vector2(34, 310)
+
+[node name="UI" type="CanvasLayer" parent="." groups=["ui"]]
+script = ExtResource("5_dwbse")
+
+[node name="Hearts" type="HBoxContainer" parent="UI"]
+anchors_preset = -1
+anchor_right = 0.14496528
+anchor_bottom = 0.07561728
+theme_override_constants/separation = 16
+metadata/_edit_use_anchors_ = true
+
+[node name="Heart1" type="TextureRect" parent="UI/Hearts"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_dwbse")
+stretch_mode = 5
+
+[node name="Heart2" type="TextureRect" parent="UI/Hearts"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_pkg7o")
+stretch_mode = 5
+
+[node name="Heart3" type="TextureRect" parent="UI/Hearts"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_gbfbk")
+stretch_mode = 5
