@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfdqsuvsyq1ps"]
+
+[ext_resource type="Script" uid="uid://dudgt4spc563h" path="res://scrap.gd" id="1_ktp86"]
+[ext_resource type="Texture2D" uid="uid://dv4r4nkh2yvp7" path="res://final tilsheet.png" id="2_a3045"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dault"]
+atlas = ExtResource("2_a3045")
+region = Rect2(201, 72.5, 52, 49)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a3045"]
+radius = 18.0
+
+[node name="scrap" type="Area2D"]
+script = ExtResource("1_ktp86")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_dault")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -2)
+shape = SubResource("CircleShape2D_a3045")
+
+[connection signal="body_entered" from="." to="." method="_on_scrap_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
