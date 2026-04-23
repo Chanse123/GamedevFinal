@@ -21,5 +21,4 @@ texture = SubResource("AtlasTexture_dault")
 position = Vector2(-5, -2)
 shape = SubResource("CircleShape2D_a3045")
 
-[connection signal="body_entered" from="." to="." method="_on_scrap_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
