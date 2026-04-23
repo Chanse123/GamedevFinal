@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=3 uid="uid://dbcwd702xf2xh"]
+
+[ext_resource type="Texture2D" uid="uid://c783l36bkmufw" path="res://enemy.png" id="1_2xpqq"]
+[ext_resource type="Script" uid="uid://d3f57g4ggiage" path="res://enemy_shooter.gd" id="1_3vy8j"]
+[ext_resource type="PackedScene" path="res://fireball.tscn" id="2_f6mbu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f6mbu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vy8j"]
+atlas = ExtResource("1_2xpqq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6mbu"]
+atlas = ExtResource("1_2xpqq")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ko04"]
+atlas = ExtResource("1_2xpqq")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8g1e"]
+atlas = ExtResource("1_2xpqq")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axis3"]
+atlas = ExtResource("1_2xpqq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soons"]
+atlas = ExtResource("1_2xpqq")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nvpm"]
+atlas = ExtResource("1_2xpqq")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h40p3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vy8j")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6mbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ko04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8g1e")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axis3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soons")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nvpm")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="EnemyShooter" type="CharacterBody2D"]
+script = ExtResource("1_3vy8j")
+fireball_scene = ExtResource("2_f6mbu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_f6mbu")
+
+[node name="WallRay" type="RayCast2D" parent="."]
+target_position = Vector2(51, -1)
+
+[node name="FloorRay" type="RayCast2D" parent="."]
+target_position = Vector2(22, 24)
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Anim" type="AnimatedSprite2D" parent="Visuals"]
+sprite_frames = SubResource("SpriteFrames_h40p3")
+animation = &"idle"
+
+[node name="WandTip" type="Marker2D" parent="Visuals"]
+position = Vector2(36, 0)
