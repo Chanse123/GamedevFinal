@@ -26,6 +26,7 @@ var dash_cooldown_timer = 0.0
 var dash_direction = 1
 
 func _ready():
+	add_to_group("player")
 	$AnimatedSprite2D.play()
 	await get_tree().process_frame
 	ui.update_hearts(health)
