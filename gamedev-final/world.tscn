@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://y48nnm0n875m"]
+[gd_scene load_steps=13 format=3 uid="uid://y48nnm0n875m"]
 
 [ext_resource type="Script" uid="uid://cbiwyaeqrfusj" path="res://world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://cmsuiygqikgpa" path="res://player.tscn" id="2_tlwt5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b3l7ndby5r2m2" path="res://ui.gd" id="5_dwbse"]
 [ext_resource type="PackedScene" uid="uid://c4nil587mdr7g" path="res://enemy.tscn" id="7_pkg7o"]
 [ext_resource type="PackedScene" uid="uid://bfdqsuvsyq1ps" path="res://scrap.tscn" id="8_gbfbk"]
+[ext_resource type="PackedScene" uid="uid://dbcwd702xf2xh" path="res://enemy_shooter.tscn" id="9_ioo17"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwbse"]
 atlas = ExtResource("5_036b0")
@@ -77,3 +78,6 @@ collision_mask = 3
 position = Vector2(1421, 230)
 
 [node name="platforms" parent="." instance=ExtResource("3_gbfbk")]
+
+[node name="EnemyShooter" parent="." instance=ExtResource("9_ioo17")]
+position = Vector2(1619, 242)
