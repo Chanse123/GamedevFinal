@@ -12,8 +12,6 @@ func _ready() -> void:
 	get_tree().create_timer(lifetime).timeout.connect(queue_free)
 	
 	if direction.x < 0:
-		$CollisionShape2D.position.x = -45
-		$Anim.position.x = -46
 		$Anim.flip_h = true
 	
 	if anim.sprite_frames and anim.sprite_frames.has_animation("fly"):
