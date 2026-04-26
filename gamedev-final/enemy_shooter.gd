@@ -8,12 +8,11 @@ class_name EnemyShooter
 @export var shoot_interval := 1.2
 @export var fireball_speed := 450.0
 
-# Animation names (set these to match your SpriteFrames)
 @export var anim_idle := "idle"
 @export var anim_walk := "walk"
-@export var anim_shoot := "shoot" # or "cast"
+@export var anim_shoot := "shoot"
 
-var facing := 1 # 1 = right, -1 = left
+var facing := 1
 
 @onready var wall_ray: RayCast2D = $WallRay
 @onready var floor_ray: RayCast2D = $FloorRay
@@ -24,29 +23,25 @@ var facing := 1 # 1 = right, -1 = left
 @onready var wand_tip: Marker2D = $Visuals/WandTip
 
 func _ready() -> void:
+	add_to_group("enemy_shooter")
 	_apply_facing()
-
-	# start moving animation
 	if anim.sprite_frames and anim.sprite_frames.has_animation(anim_walk):
 		anim.play(anim_walk)
 	elif anim.sprite_frames and anim.sprite_frames.has_animation(anim_idle):
 		anim.play(anim_idle)
-
 	timer.wait_time = shoot_interval
 	timer.timeout.connect(_shoot)
 	timer.start()
 
 func _physics_process(delta: float) -> void:
-	# gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# patrol
 	velocity.x = facing * move_speed
 	move_and_slide()
 
-	# turn around if wall ahead OR no ground ahead
-	if wall_ray.is_colliding() or not floor_ray.is_colliding():
+	# Check AFTER move_and_slide so collision info is fresh
+	if is_on_wall() or not floor_ray.is_colliding():
 		_turn_around()
 
 func _turn_around() -> void:
@@ -54,18 +49,13 @@ func _turn_around() -> void:
 	_apply_facing()
 
 func _apply_facing() -> void:
-	# flip only visuals (wand tip flips with it)
 	visuals.scale.x = facing
-
-	# keep rays pointing forward (so edge/wall checks work)
 	wall_ray.target_position.x = abs(wall_ray.target_position.x) * facing
 	floor_ray.target_position.x = abs(floor_ray.target_position.x) * facing
 
 func _shoot() -> void:
 	if fireball_scene == null:
 		return
-
-	# shoot anim if exists
 	if anim.sprite_frames and anim.sprite_frames.has_animation(anim_shoot):
 		anim.play(anim_shoot)
 
@@ -75,6 +65,5 @@ func _shoot() -> void:
 	f.speed = fireball_speed
 	get_tree().current_scene.add_child(f)
 
-	# go back to walk (optional)
 	if anim.sprite_frames and anim.sprite_frames.has_animation(anim_walk):
 		anim.play(anim_walk)
