@@ -35,18 +35,19 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_olwj8"]
 
 [node name="Fireball" type="Area2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_olwj8")
-metadata/_edit_group_ = true
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(46, 4)
+position = Vector2(5, 7)
 sprite_frames = SubResource("SpriteFrames_gveuj")
 animation = &"fireball"
 frame_progress = 0.13590096
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(45, -1)
+position = Vector2(2, 2)
 shape = SubResource("CircleShape2D_olwj8")
+metadata/_edit_group_ = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, 1)

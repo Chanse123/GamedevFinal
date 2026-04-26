@@ -33,10 +33,11 @@ scrap_needed = 5
 [node name="Parallax2D" type="Parallax2D" parent="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="Node2D/Parallax2D"]
-offset_top = -1595.0
+offset_top = -643.0
 offset_right = 4727.0
 offset_bottom = 565.0
 texture = ExtResource("2_wse8f")
+expand_mode = 1
 
 [node name="player" parent="." instance=ExtResource("2_tlwt5")]
 position = Vector2(72, 225)
