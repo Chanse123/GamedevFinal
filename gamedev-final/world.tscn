@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://y48nnm0n875m"]
+[gd_scene load_steps=14 format=3 uid="uid://y48nnm0n875m"]
 
 [ext_resource type="Script" uid="uid://cbiwyaeqrfusj" path="res://world.gd" id="1_f3sb7"]
 [ext_resource type="PackedScene" uid="uid://cmsuiygqikgpa" path="res://player.tscn" id="2_tlwt5"]
+[ext_resource type="Texture2D" uid="uid://i7sxdp6fex83" path="res://desert.png" id="2_wse8f"]
 [ext_resource type="PackedScene" uid="uid://bkhycym5eachh" path="res://platforms.tscn" id="3_gbfbk"]
 [ext_resource type="PackedScene" uid="uid://b0ldhebo48rpe" path="res://deathbox.tscn" id="4_aqk2v"]
 [ext_resource type="Texture2D" uid="uid://dv4r4nkh2yvp7" path="res://final tilsheet.png" id="5_036b0"]
@@ -26,6 +27,16 @@ region = Rect2(71, 143.5, 47, 48.5)
 position = Vector2(1, 0)
 script = ExtResource("1_f3sb7")
 scrap_needed = 5
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="Node2D/Parallax2D"]
+offset_top = -1595.0
+offset_right = 4727.0
+offset_bottom = 565.0
+texture = ExtResource("2_wse8f")
 
 [node name="player" parent="." instance=ExtResource("2_tlwt5")]
 position = Vector2(72, 225)
