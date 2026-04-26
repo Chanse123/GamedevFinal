@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4nil587mdr7g"]
+[gd_scene load_steps=10 format=3 uid="uid://c4nil587mdr7g"]
 
 [ext_resource type="Script" uid="uid://6gepcdxuwlm2" path="res://enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://c23204v0wotj3" path="res://robot.png" id="1_7k104"]
@@ -41,7 +41,10 @@ animations = [{
 size = Vector2(31, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
-size = Vector2(41, 9)
+size = Vector2(33, 33)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iifgy"]
+size = Vector2(41, 5.25)
 
 [node name="enemy" type="CharacterBody2D"]
 position = Vector2(2, 0)
@@ -54,7 +57,7 @@ animation = &"walking"
 frame_progress = 0.016425623
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(4, 19)
+position = Vector2(0.5, 19.5)
 shape = SubResource("RectangleShape2D_qi2p4")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -63,7 +66,7 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(5.5, 4.5)
+position = Vector2(0.5, 18.5)
 shape = SubResource("RectangleShape2D_4gyqm")
 debug_color = Color(0.9582171, 0, 0.53098524, 0.41960785)
 
@@ -71,4 +74,11 @@ debug_color = Color(0.9582171, 0, 0.53098524, 0.41960785)
 position = Vector2(4, 35)
 target_position = Vector2(0, 40)
 
+[node name="StompArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
+position = Vector2(5, -3)
+shape = SubResource("RectangleShape2D_iifgy")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="StompArea" to="." method="_on_stomp_area_body_entered"]
