@@ -5,6 +5,8 @@ var direction = 1
 var can_turn = true
 
 @onready var ray = $RayCast2D
+func _ready() -> void:
+	add_to_group("enemy_shooter")
 
 func _physics_process(delta):
 	if not is_on_floor():
