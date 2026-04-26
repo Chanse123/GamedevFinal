@@ -47,6 +47,3 @@ frame_progress = 0.13590096
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(45, -1)
 shape = SubResource("CircleShape2D_olwj8")
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, 1)

@@ -14,19 +14,16 @@ func _ready() -> void:
 	if direction.x < 0:
 		$Anim.flip_h = true
 	
-	if anim.sprite_frames and anim.sprite_frames.has_animation("fly"):
-		anim.play("fly")
-	else:
-		anim.play()
+	anim.play("fireball")
 		
 	body_entered.connect(func(body: Node) -> void:
-		if body.is_in_group("player") and body.has_method("take_projectile_hit"):
-			body.take_projectile_hit(self, direction.x)
+		if body.is_in_group("player") and body.has_method("take_damage"):
+			body.take_damage(1)
+			queue_free()
 			return
 		queue_free()
 	)
-	if has_node("VisibleOnScreenNotifier2D"):
-		$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
+
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 
