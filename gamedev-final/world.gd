@@ -6,6 +6,7 @@ var scrap := 0
 var game_won := false
 
 @onready var scrap_label: Label = $UI/Label
+@onready var win_panel = $UI/Control
 
 func _ready() -> void:
 	_update_scrap_label()
@@ -24,8 +25,11 @@ func _trigger_win() -> void:
 	if game_won:
 		return
 	game_won = true
-	# Show win message by reusing the scrap label, or add a WinLabel node
-	scrap_label.text = "YOU WIN!  Scrap: %d / %d" % [scrap, scrap_needed]
-	# Pause the game after a short delay so the player sees the message
-	await get_tree().create_timer(1.5).timeout
+
+	win_panel.visible = true
 	get_tree().paused = true
+
+
+func _on_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
